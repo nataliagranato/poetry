@@ -9,6 +9,15 @@ html {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
+/* Garantir que o modo escuro funcione */
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
