@@ -11,16 +11,16 @@ import { baseUrl } from './sitemap'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Poetry - Natália Granato',
+    template: '%s | Poetry - Natália Granato',
   },
-  description: 'This is my portfolio.',
+  description: 'Seu silêncio não te protegerá - A arte da palavra escrita, falada e cantada por @nataliagranato',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Poetry - Natália Granato',
+    description: 'Seu silêncio não te protegerá - A arte da palavra escrita, falada e cantada por @nataliagranato',
     url: baseUrl,
-    siteName: 'My Portfolio',
-    locale: 'en_US',
+    siteName: 'Poetry - Natália Granato',
+    locale: 'pt_BR',
     type: 'website',
   },
   robots: {
@@ -45,7 +45,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={cx(
         'text-black bg-white dark:text-white dark:bg-black',
         GeistSans.variable,

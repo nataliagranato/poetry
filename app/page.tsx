@@ -4,14 +4,10 @@ export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
+        Seu silêncio não te protegerá
       </h1>
       <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
+        {`Quais são as palavras que você ainda não tem? O que você precisa dizer? Quais são as tiranias que você engole dia após dia e tenta tomar para si, até adoecer e morrer por causa delas, ainda em silêncio? Audre Lorde`}
       </p>
       <div className="my-8">
         <BlogPosts />
