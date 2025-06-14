@@ -66,6 +66,11 @@ export function formatDate(date: string, includeRelative = false) {
   }
   let targetDate = new Date(date)
 
+  // Verificar se a data é válida
+  if (isNaN(targetDate.getTime())) {
+    return 'Data inválida'
+  }
+
   let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear()
   let monthsAgo = currentDate.getMonth() - targetDate.getMonth()
   let daysAgo = currentDate.getDate() - targetDate.getDate()
@@ -82,8 +87,8 @@ export function formatDate(date: string, includeRelative = false) {
     formattedDate = 'Today'
   }
 
-  let fullDate = targetDate.toLocaleString('en-us', {
-    month: 'long',
+  let fullDate = targetDate.toLocaleString('pt-BR', {
+    month: 'short',
     day: 'numeric',
     year: 'numeric',
   })
