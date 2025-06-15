@@ -8,15 +8,15 @@ import { MainLayout } from './components/main-layout'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Poetry - Natália Granato',
-    template: '%s | Poetry - Natália Granato',
+    default: 'Natália Granato',
+    template: '%s | Natália Granato',
   },
-  description: 'Seu silêncio não te protegerá - A arte da palavra escrita, falada e cantada por @nataliagranato',
+  description: 'A arte da palavra escrita, falada e cantada por @nataliagranato',
   openGraph: {
-    title: 'Poetry - Natália Granato',
-    description: 'Seu silêncio não te protegerá - A arte da palavra escrita, falada e cantada por @nataliagranato',
+    title: 'Natália Granato',
+    description: 'A arte da palavra escrita, falada e cantada por @nataliagranato',
     url: baseUrl,
-    siteName: 'Poetry - Natália Granato',
+    siteName: 'Natália Granato',
     locale: 'pt_BR',
     type: 'website',
   },
