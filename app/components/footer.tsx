@@ -1,61 +1,31 @@
-function ArrowIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
-}
+import Link from 'next/link'
 
-export default function Footer() {
+export function Footer() {
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
+    <footer className="py-6 md:px-8 md:py-0">
+      <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+        <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
+          © {new Date().getFullYear()} Natália Granato
+        </p>
+        <div className="flex gap-4">
+          <Link
+            href="https://www.instagram.com/granatowp"
             target="_blank"
-            href="/rss"
+            rel="noreferrer"
+            className="text-sm text-muted-foreground underline-offset-4 hover:underline"
           >
-            <ArrowIcon />
-            <p className="ml-2 h-7">rss</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
+            Instagram
+          </Link>
+          <Link
+            href="https://x.com/granatowp"
             target="_blank"
-            href="https://github.com/vercel/next.js"
+            rel="noreferrer"
+            className="text-sm text-muted-foreground underline-offset-4 hover:underline"
           >
-            <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://vercel.com/templates/next.js/portfolio-starter-kit"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">view source</p>
-          </a>
-        </li>
-      </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} MIT Licensed
-      </p>
+            X
+          </Link>
+        </div>
+      </div>
     </footer>
   )
 }
