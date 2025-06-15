@@ -47,8 +47,8 @@ export function ThemeToggle() {
     // Evitar hidratação mismatch
     if (!mounted) {
         return (
-            <div className="p-2 w-10 h-10 rounded-lg">
-                <div className="w-5 h-5"></div>
+            <div className="p-3 w-12 h-12 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 shadow-sm">
+                <div className="w-5 h-5 mx-auto mt-0.5"></div>
             </div>
         )
     }
@@ -56,7 +56,7 @@ export function ThemeToggle() {
     return (
         <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg transition-all duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-transparent hover:border-neutral-200 dark:hover:border-neutral-700"
+            className="p-3 rounded-full transition-all duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600 bg-white/90 dark:bg-black/90 backdrop-blur-sm shadow-sm hover:shadow-md"
             aria-label={isDark ? 'Alternar para modo claro' : 'Alternar para modo escuro'}
             title={isDark ? 'Modo claro' : 'Modo escuro'}
         >
