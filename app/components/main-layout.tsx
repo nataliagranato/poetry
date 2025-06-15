@@ -1,7 +1,7 @@
 'use client'
 
 import { Navbar } from './nav'
-import Footer from './footer'
+import { Footer } from './footer'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
