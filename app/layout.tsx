@@ -8,6 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { ThemeToggle } from './components/theme-toggle'
 import { baseUrl } from './sitemap'
+import { ThemeProvider } from './components/theme-provider'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -52,46 +53,22 @@ export default function RootLayout({
         GeistSans.variable,
         GeistMono.variable
       )}
+      suppressHydrationWarning
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  var shouldBeDark = theme === 'dark' || (!theme && prefersDark);
-                  
-                  if (shouldBeDark) {
-                    document.documentElement.classList.add('dark');
-                    document.documentElement.style.colorScheme = 'dark';
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                    document.documentElement.style.colorScheme = 'light';
-                  }
-                } catch (e) {
-                  console.log('Theme initialization error:', e);
-                }
-              })();
-            `,
-          }}
-          suppressHydrationWarning
-        />
-      </head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        {/* ThemeToggle fixo, menor e afastado do canto */}
-        <div className="fixed top-4 right-4 z-50">
-          <ThemeToggle />
-        </div>
+        <ThemeProvider>
+          <div className="fixed top-4 right-4 z-50">
+            <ThemeToggle />
+          </div>
 
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <Navbar />
-          {children}
-          <Footer />
-          <Analytics />
-          <SpeedInsights />
-        </main>
+          <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+            <Navbar />
+            {children}
+            <Footer />
+            <Analytics />
+            <SpeedInsights />
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   )

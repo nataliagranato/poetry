@@ -1,55 +1,23 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useTheme } from './theme-provider'
 
 export function ThemeToggle() {
-    const [isDark, setIsDark] = useState(false)
-    const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-        setMounted(true)
-        // Detecta o tema real do <html>
-        const currentIsDark = document.documentElement.classList.contains('dark')
-        setIsDark(currentIsDark)
-    }, [])
-
-    const applyTheme = (dark: boolean) => {
-        const html = document.documentElement
-        if (dark) {
-            html.classList.add('dark')
-            html.style.colorScheme = 'dark'
-        } else {
-            html.classList.remove('dark')
-            html.style.colorScheme = 'light'
-        }
-    }
+    const { theme, setTheme } = useTheme()
 
     const toggleTheme = () => {
-        const newTheme = !isDark
-        setIsDark(newTheme)
-        applyTheme(newTheme)
-        localStorage.setItem('theme', newTheme ? 'dark' : 'light')
-    }
-
-    // Renderiza um placeholder durante a hidratação
-    if (!mounted) {
-        return (
-            <div className="p-1 w-7 h-7 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow" suppressHydrationWarning>
-                <div className="w-4 h-4 mx-auto mt-0.5"></div>
-            </div>
-        )
+        setTheme(theme === 'dark' ? 'light' : 'dark')
     }
 
     return (
         <button
             onClick={toggleTheme}
             className="p-1 w-7 h-7 rounded-full transition-all duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 shadow"
-            aria-label={isDark ? 'Alternar para modo claro' : 'Alternar para modo escuro'}
-            title={isDark ? 'Clique para modo claro' : 'Clique para modo escuro'}
-            suppressHydrationWarning
+            aria-label={theme === 'dark' ? 'Alternar para modo claro' : 'Alternar para modo escuro'}
+            title={theme === 'dark' ? 'Clique para modo claro' : 'Clique para modo escuro'}
         >
             <div className="transition-transform duration-200 hover:scale-110">
-                {isDark ? (
+                {theme === 'dark' ? (
                     <svg
                         width="16"
                         height="16"
