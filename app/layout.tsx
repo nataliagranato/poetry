@@ -4,7 +4,6 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { baseUrl } from './sitemap'
 import { MainLayout } from './components/main-layout'
-import { ThemeProvider } from './components/theme-provider'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -45,31 +44,13 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
+        'text-black bg-white dark:text-white dark:bg-black dark',
         GeistSans.variable,
         GeistMono.variable
       )}
-      suppressHydrationWarning
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const theme = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (theme === 'dark' || (!theme && prefersDark)) {
-                  document.documentElement.classList.add('dark');
-                }
-              } catch (e) {}
-            `,
-          }}
-        />
-      </head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        <ThemeProvider>
-          <MainLayout>{children}</MainLayout>
-        </ThemeProvider>
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   )
