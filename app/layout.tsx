@@ -76,11 +76,12 @@ export default function RootLayout({
               })();
             `,
           }}
+          suppressHydrationWarning
         />
       </head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         {/* ThemeToggle fixo, menor e afastado do canto */}
-        <div className="fixed top-6 right-6 z-50 w-9 h-9 flex items-center justify-center">
+        <div className="fixed top-4 right-4 z-50">
           <ThemeToggle />
         </div>
 

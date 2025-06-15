@@ -31,10 +31,11 @@ export function ThemeToggle() {
         localStorage.setItem('theme', newTheme ? 'dark' : 'light')
     }
 
+    // Renderiza um placeholder durante a hidratação
     if (!mounted) {
         return (
-            <div className="p-1 w-9 h-9 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow">
-                <div className="w-5 h-5 mx-auto mt-0.5"></div>
+            <div className="p-1 w-7 h-7 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow" suppressHydrationWarning>
+                <div className="w-4 h-4 mx-auto mt-0.5"></div>
             </div>
         )
     }
@@ -42,15 +43,16 @@ export function ThemeToggle() {
     return (
         <button
             onClick={toggleTheme}
-            className="p-1 w-9 h-9 rounded-full transition-all duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 shadow"
+            className="p-1 w-7 h-7 rounded-full transition-all duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 shadow"
             aria-label={isDark ? 'Alternar para modo claro' : 'Alternar para modo escuro'}
             title={isDark ? 'Clique para modo claro' : 'Clique para modo escuro'}
+            suppressHydrationWarning
         >
             <div className="transition-transform duration-200 hover:scale-110">
                 {isDark ? (
                     <svg
-                        width="20"
-                        height="20"
+                        width="16"
+                        height="16"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -64,8 +66,8 @@ export function ThemeToggle() {
                     </svg>
                 ) : (
                     <svg
-                        width="20"
-                        height="20"
+                        width="16"
+                        height="16"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
