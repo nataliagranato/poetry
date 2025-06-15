@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { SimpleMDX } from 'app/components/simple-mdx'
+import { SimpleMDX } from '../../components/simple-mdx'
 import { formatDate, getBlogPosts } from 'app/poetry/utils'
 import { baseUrl } from 'app/sitemap'
 
