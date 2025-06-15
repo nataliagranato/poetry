@@ -1,6 +1,5 @@
 'use client'
 
-import { ThemeProvider } from './theme-provider'
 import { ThemeToggle } from './theme-toggle'
 import { Navbar } from './nav'
 import Footer from './footer'
@@ -9,7 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider>
+    <>
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
@@ -21,6 +20,6 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
         <Analytics />
         <SpeedInsights />
       </main>
-    </ThemeProvider>
+    </>
   )
 } 
