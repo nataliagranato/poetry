@@ -79,8 +79,8 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        {/* ThemeToggle fixo no canto superior direito */}
-        <div className="fixed top-4 right-4 z-50">
+        {/* ThemeToggle fixo, menor e afastado do canto */}
+        <div className="fixed top-6 right-6 z-50 w-9 h-9 flex items-center justify-center">
           <ThemeToggle />
         </div>
 
