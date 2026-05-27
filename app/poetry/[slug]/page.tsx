@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
-import { SimpleMDX } from '../../components/simple-mdx'
-import { formatDate, getBlogPosts } from 'app/poetry/utils'
+import { PoemReader } from '../../components/poem-reader'
+import { getBlogPosts } from 'app/poetry/utils'
 import { baseUrl } from 'app/sitemap'
 
 export async function generateStaticParams() {
@@ -59,7 +59,7 @@ export default function Poetry({ params }) {
     }
 
     return (
-        <section>
+        <section className="animate-fade-in">
             <script
                 type="application/ld+json"
                 suppressHydrationWarning
@@ -85,14 +85,7 @@ export default function Poetry({ params }) {
             <h1 className="title font-semibold text-2xl tracking-tighter">
                 {post.metadata.title}
             </h1>
-            <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-                <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                    {formatDate(post.metadata.publishedAt)}
-                </p>
-            </div>
-            <article className="prose">
-                <SimpleMDX source={post.content} />
-            </article>
+            <PoemReader content={post.content} />
         </section>
     )
 }
