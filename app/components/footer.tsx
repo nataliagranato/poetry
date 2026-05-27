@@ -24,15 +24,7 @@ export function Footer() {
           >
             X
           </Link>
-          <Link
-            href="https://bsky.app/profile/nataliagranato.bsky.social"
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm text-muted-foreground underline-offset-4 hover:underline"
-          >
-            Bluesky
-          </Link>
-          <Link
+<Link
             href="https://open.spotify.com/show/0X3f62yvAszkVq2afMfSKx?si=683cf5a1d08b4332"
             target="_blank"
             rel="noreferrer"

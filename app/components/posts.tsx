@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { formatDate, getBlogPosts } from 'app/poetry/utils'
+import { getBlogPosts } from 'app/poetry/utils'
 
 export function BlogPosts() {
   let allBlogs = getBlogPosts()
@@ -18,17 +18,10 @@ export function BlogPosts() {
         .map((post) => (
           <Link
             key={post.slug}
-            className="flex flex-col space-y-1 mb-4"
+            className="block mb-4 py-1 text-neutral-900 dark:text-neutral-100 tracking-tight hover:translate-x-1 transition-transform"
             href={`/poetry/${post.slug}`}
           >
-            <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-              <p className="text-neutral-600 dark:text-neutral-400 w-[140px] tabular-nums whitespace-nowrap flex-shrink-0">
-                {formatDate(post.metadata.publishedAt, false)}
-              </p>
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.title}
-              </p>
-            </div>
+            {post.metadata.title}
           </Link>
         ))}
     </div>
