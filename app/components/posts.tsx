@@ -18,7 +18,7 @@ export function BlogPosts() {
         .map((post) => (
           <Link
             key={post.slug}
-            className="block mb-4 py-1 text-neutral-900 dark:text-neutral-100 tracking-tight hover:translate-x-1 transition-transform"
+            className="block mb-4 py-1 text-neutral-900 [.dark_&]:text-neutral-100 tracking-tight hover:translate-x-1 transition-transform"
             href={`/poetry/${post.slug}`}
           >
             {post.metadata.title}

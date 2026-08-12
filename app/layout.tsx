@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { baseUrl } from './sitemap'
 import { MainLayout } from './components/main-layout'
+import { themeScript } from './theme-script'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -43,12 +44,16 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
+      suppressHydrationWarning
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-black dark',
+        'text-black bg-white',
         GeistSans.variable,
         GeistMono.variable
       )}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <MainLayout>{children}</MainLayout>
       </body>
