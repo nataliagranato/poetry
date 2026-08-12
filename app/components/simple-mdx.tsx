@@ -30,7 +30,7 @@ export function SimpleMDX({ source }: SimpleMDXProps) {
     }
 
     return (
-        <div className="prose prose-neutral dark:prose-invert max-w-none">
+        <div className="prose prose-neutral [.dark_&]:prose-invert max-w-none">
             <div
                 dangerouslySetInnerHTML={{
                     __html: processContent(source)
@@ -38,4 +38,4 @@ export function SimpleMDX({ source }: SimpleMDXProps) {
             />
         </div>
     )
-} 
+}

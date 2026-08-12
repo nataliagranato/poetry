@@ -7,7 +7,7 @@ export default function NotFound() {
       <p className="text-xl mb-8">Página não encontrada</p>
       <a
         href="/"
-        className="text-blue-600 dark:text-blue-400 hover:underline"
+        className="text-blue-600 [.dark_&]:text-blue-400 hover:underline"
       >
         Voltar para a página inicial
       </a>

@@ -39,7 +39,7 @@ export function ThemeToggle() {
         activateLightTheme ? 'Ativar tema claro' : 'Ativar tema escuro'
       }
       title={activateLightTheme ? 'Ativar tema claro' : 'Ativar tema escuro'}
-      className="m-1 flex size-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-700 dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-white dark:focus-visible:outline-neutral-300"
+      className="m-1 flex size-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-700 [.dark_&]:border-neutral-800 [.dark_&]:text-neutral-300 [.dark_&]:hover:bg-neutral-900 [.dark_&]:hover:text-white [.dark_&]:focus-visible:outline-neutral-300"
     >
       {activateLightTheme ? (
         <svg

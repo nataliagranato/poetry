@@ -46,7 +46,7 @@ export default function RootLayout({
       lang="pt-BR"
       suppressHydrationWarning
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
+        'text-black bg-white',
         GeistSans.variable,
         GeistMono.variable
       )}
