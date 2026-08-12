@@ -53,6 +53,12 @@ export function getBlogPosts() {
     return getMDXData(path.join(process.cwd(), 'app', 'poetry', 'posts'))
 }
 
+export async function getBlogPost(params: Promise<{ slug: string }>) {
+    let { slug } = await params
+
+    return getBlogPosts().find((post) => post.slug === slug)
+}
+
 export function formatDate(date: string, includeRelative = false) {
     let currentDate = new Date()
 
