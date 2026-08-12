@@ -1,7 +1,11 @@
 import { notFound } from 'next/navigation'
 import { PoemReader } from '../../components/poem-reader'
-import { getBlogPosts } from 'app/poetry/utils'
+import { getBlogPost, getBlogPosts } from 'app/poetry/utils'
 import { baseUrl } from 'app/sitemap'
+
+type PoetryPageProps = {
+    params: Promise<{ slug: string }>
+}
 
 export async function generateStaticParams() {
     let posts = getBlogPosts()
@@ -11,8 +15,8 @@ export async function generateStaticParams() {
     }))
 }
 
-export function generateMetadata({ params }) {
-    let post = getBlogPosts().find((post) => post.slug === params.slug)
+export async function generateMetadata({ params }: PoetryPageProps) {
+    let post = await getBlogPost(params)
     if (!post) {
         return
     }
@@ -51,8 +55,8 @@ export function generateMetadata({ params }) {
     }
 }
 
-export default function Poetry({ params }) {
-    let post = getBlogPosts().find((post) => post.slug === params.slug)
+export default async function Poetry({ params }: PoetryPageProps) {
+    let post = await getBlogPost(params)
 
     if (!post) {
         notFound()
