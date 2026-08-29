@@ -14,3 +14,9 @@ test('creates the SoundCloud iframe only after its API script is ready', () => {
 test('initializes the widget synchronously when the iframe mounts', () => {
   assert.match(source, /ref=\{initializeWidget\}/)
 })
+
+test('enables autoplay and exposes a volume control', () => {
+  assert.match(source, /auto_play:\s*true/)
+  assert.match(source, /getVolume|setVolume/)
+  assert.match(source, /music-player-volume/)
+})

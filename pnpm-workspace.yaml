@@ -1,2 +1,2 @@
 allowBuilds:
-  '@vercel/speed-insights': set this to true or false
+  "@vercel/speed-insights": true

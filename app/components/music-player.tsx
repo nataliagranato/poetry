@@ -22,6 +22,7 @@ type Widget = {
   getCurrentSound: (callback: (sound: Sound) => void) => void
   getDuration: (callback: (duration: number) => void) => void
   getPosition: (callback: (position: number) => void) => void
+  getVolume: (callback: (volume: number) => void) => void
   isPaused: (callback: (paused: boolean) => void) => void
   load: (url: string, options: Record<string, unknown>) => void
   next: () => void
@@ -29,6 +30,7 @@ type Widget = {
   play: () => void
   prev: () => void
   seekTo: (milliseconds: number) => void
+  setVolume: (volume: number) => void
 }
 
 declare global {
@@ -69,6 +71,7 @@ export function MusicPlayer() {
   const [trackTitle, setTrackTitle] = useState('HEAVENLY')
   const [position, setPosition] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [volume, setVolume] = useState(80)
 
   const syncTrack = useCallback(() => {
     const widget = widgetRef.current
@@ -79,6 +82,7 @@ export function MusicPlayer() {
     })
     widget.getDuration(setDuration)
     widget.getPosition(setPosition)
+    widget.getVolume((value) => setVolume(Math.round(value * 100)))
     widget.isPaused((paused) => setPlaying(!paused))
   }, [])
 
@@ -91,6 +95,7 @@ export function MusicPlayer() {
     widget.bind(events.READY, () => {
       setReady(true)
       syncTrack()
+      widget.play()
     })
     widget.bind(events.PLAY, syncTrack)
     widget.bind(events.PAUSE, () => setPlaying(false))
@@ -109,7 +114,7 @@ export function MusicPlayer() {
     setTrackTitle('Carregando…')
     setPlaying(false)
     widget.load(albums[index].url, {
-      auto_play: false,
+      auto_play: true,
       hide_related: true,
       show_comments: false,
       show_user: false,
@@ -138,7 +143,7 @@ export function MusicPlayer() {
         <iframe
           ref={initializeWidget}
           title="Fonte de áudio"
-          src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(albums[0].url)}&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false`}
+          src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(albums[0].url)}&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false`}
           allow="autoplay"
           className="music-player-source"
           tabIndex={-1}
@@ -164,6 +169,25 @@ export function MusicPlayer() {
         <button type="button" onClick={() => widgetRef.current?.next()} disabled={!ready} aria-label="Próxima faixa">
           <svg viewBox="0 0 24 24" aria-hidden="true"><Icon name="next" /></svg>
         </button>
+      </div>
+
+      <div className="music-player-volume" aria-label="Volume do player">
+        <span>Volume</span>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value={volume}
+          onChange={(event) => {
+            const nextVolume = Number(event.target.value) / 100
+            setVolume(Number(event.target.value))
+            widgetRef.current?.setVolume(nextVolume)
+          }}
+          disabled={!ready}
+          aria-label="Volume do player"
+        />
+        <span>{volume}%</span>
       </div>
 
       <div className="music-player-timeline">
