@@ -186,6 +186,7 @@ export function MusicPlayer() {
           }}
           disabled={!ready}
           aria-label="Volume do player"
+          style={{ '--player-volume': `${volume}%` } as React.CSSProperties}
         />
         <span>{volume}%</span>
       </div>

@@ -330,21 +330,63 @@ table {
 
 .music-player-volume {
   grid-column: 1 / -1;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 0.5rem;
-  margin-top: -0.25rem;
+  margin-top: -0.125rem;
 }
 
 .music-player-volume span {
   color: #737373;
   font-family: var(--font-geist-mono);
   font-size: 0.625rem;
+  line-height: 1;
+}
+
+.music-player-volume span:last-child {
+  min-width: 2.5rem;
+  text-align: right;
 }
 
 .music-player-volume input {
   width: 100%;
-  accent-color: #171717;
+  height: 1rem;
+  cursor: pointer;
+  appearance: none;
+  background: transparent;
+}
+
+.music-player-volume input::-webkit-slider-runnable-track {
+  height: 2px;
+  background: linear-gradient(to right, currentcolor var(--player-volume), #666666 var(--player-volume));
+}
+
+.music-player-volume input::-moz-range-track {
+  height: 2px;
+  background: #666666;
+}
+
+.music-player-volume input::-moz-range-progress {
+  height: 2px;
+  background: currentcolor;
+}
+
+.music-player-volume input::-webkit-slider-thumb {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: -3px;
+  appearance: none;
+  border-radius: 50%;
+  background: currentcolor;
+}
+
+.music-player-volume input::-moz-range-thumb {
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: currentcolor;
 }
 
 .music-player-timeline {
