@@ -1,7 +1,7 @@
 'use client'
 
 import Script from 'next/script'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 const albums = [
   {
@@ -86,6 +86,30 @@ export function MusicPlayer() {
     widget.isPaused((paused) => setPlaying(!paused))
   }, [])
 
+  const resumePlayback = useCallback(() => {
+    const widget = widgetRef.current
+    if (!widget || !ready) return
+    widget.isPaused((paused) => {
+      if (paused) widget.play()
+    })
+  }, [ready])
+
+  useEffect(() => {
+    if (!ready) return
+
+    const handleInteraction = () => {
+      resumePlayback()
+    }
+
+    window.addEventListener('pointerdown', handleInteraction, { once: true })
+    window.addEventListener('keydown', handleInteraction, { once: true })
+
+    return () => {
+      window.removeEventListener('pointerdown', handleInteraction)
+      window.removeEventListener('keydown', handleInteraction)
+    }
+  }, [ready, resumePlayback])
+
   const initializeWidget = useCallback((iframe: HTMLIFrameElement | null) => {
     if (!iframe || !window.SC || widgetRef.current) return
 
@@ -95,7 +119,7 @@ export function MusicPlayer() {
     widget.bind(events.READY, () => {
       setReady(true)
       syncTrack()
-      widget.play()
+      resumePlayback()
     })
     widget.bind(events.PLAY, syncTrack)
     widget.bind(events.PAUSE, () => setPlaying(false))
