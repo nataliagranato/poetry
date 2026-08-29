@@ -1,5 +1,4 @@
 import { BlogPosts } from 'app/components/posts'
-import { SoundCloudPlayer } from 'app/components/soundcloud-player'
 
 export default function Page() {
   return (
@@ -11,7 +10,6 @@ export default function Page() {
       <div className="my-8">
         <BlogPosts />
       </div>
-      <SoundCloudPlayer />
     </section>
   )
 }

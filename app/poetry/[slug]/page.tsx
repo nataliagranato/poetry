@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 import { PoemReader } from '../../components/poem-reader'
-import { SoundCloudPlayer } from '../../components/soundcloud-player'
 import { getBlogPost, getBlogPosts } from 'app/poetry/utils'
 import { baseUrl } from 'app/sitemap'
 
@@ -91,7 +90,6 @@ export default async function Poetry({ params }: PoetryPageProps) {
                 {post.metadata.title}
             </h1>
             <PoemReader content={post.content} />
-            <SoundCloudPlayer />
         </section>
     )
 }

@@ -13,9 +13,8 @@ const navItems: Record<string, NavItem> = {
   '/about': {
     name: 'sobre',
   },
-  'https://soundcloud.com/nataliagranato': {
+  '/#musica': {
     name: 'músicas',
-    external: true,
   },
   '/books': {
     name: 'livros',

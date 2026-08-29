@@ -192,3 +192,106 @@ table {
 .animate-fade-in {
   animation: fadeIn 0.4s ease-out;
 }
+
+.music-player {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.25rem 1rem;
+}
+
+.music-player-source {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.music-player-heading {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.music-player-mark {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  place-items: center;
+  border: 1px solid #d4d4d4;
+  font-family: var(--font-geist-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+}
+
+.dark .music-player-mark { border-color: #404040; }
+
+.music-player-kicker {
+  margin-bottom: 0.2rem;
+  overflow: hidden;
+  color: #737373;
+  font-family: var(--font-geist-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.music-player-title {
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.music-player-controls { display: flex; align-items: center; gap: 0.25rem; }
+.music-player-controls button {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 999px;
+  color: #525252;
+}
+.music-player-controls button:hover:not(:disabled) { background: #f5f5f5; color: #171717; }
+.dark .music-player-controls button { color: #a3a3a3; }
+.dark .music-player-controls button:hover:not(:disabled) { background: #171717; color: #fafafa; }
+.music-player-controls button:disabled { cursor: wait; opacity: 0.35; }
+.music-player-controls svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
+.music-player-controls .music-player-play { width: 2.75rem; height: 2.75rem; background: #171717; color: white; }
+.music-player-controls .music-player-play:hover:not(:disabled) { background: #404040; color: white; }
+.dark .music-player-controls .music-player-play { background: #fafafa; color: #171717; }
+.dark .music-player-controls .music-player-play:hover:not(:disabled) { background: #d4d4d4; color: #171717; }
+
+.music-player-timeline { grid-column: 1 / -1; display: grid; grid-template-columns: 2.25rem 1fr 2.25rem; align-items: center; gap: 0.625rem; }
+.music-player-timeline span { color: #737373; font-family: var(--font-geist-mono); font-size: 0.625rem; }
+.music-player-timeline span:last-child { text-align: right; }
+.music-player-timeline input { width: 100%; height: 1rem; cursor: pointer; appearance: none; background: transparent; }
+.music-player-timeline input::-webkit-slider-runnable-track { height: 2px; background: linear-gradient(to right, currentColor var(--player-progress), #a3a3a3 var(--player-progress)); }
+.music-player-timeline input::-moz-range-track { height: 2px; background: #d4d4d4; }
+.music-player-timeline input::-moz-range-progress { height: 2px; background: currentColor; }
+.music-player-timeline input::-webkit-slider-thumb { width: 0.625rem; height: 0.625rem; margin-top: -4px; appearance: none; border-radius: 50%; background: currentColor; }
+.music-player-timeline input::-moz-range-thumb { width: 0.625rem; height: 0.625rem; border: 0; border-radius: 50%; background: currentColor; }
+.dark .music-player-timeline input::-webkit-slider-runnable-track { background: linear-gradient(to right, currentColor var(--player-progress), #404040 var(--player-progress)); }
+.dark .music-player-timeline input::-moz-range-track { background: #404040; }
+
+.music-player-albums { grid-column: 1 / -1; display: flex; gap: 1.25rem; margin-top: -0.5rem; padding-left: 3.625rem; }
+.music-player-albums button { border-bottom: 1px solid transparent; color: #737373; font-family: var(--font-geist-mono); font-size: 0.625rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.music-player-albums button:hover, .music-player-albums button.is-active { border-color: currentColor; color: #171717; }
+.dark .music-player-albums button:hover, .dark .music-player-albums button.is-active { color: #fafafa; }
+
+@media (max-width: 520px) {
+  .music-player { gap: 1rem 0.5rem; }
+  .music-player-mark { width: 2.5rem; height: 2.5rem; }
+  .music-player-heading { gap: 0.625rem; }
+  .music-player-controls { gap: 0; }
+  .music-player-controls button { width: 1.875rem; }
+  .music-player-controls .music-player-play { width: 2.5rem; height: 2.5rem; }
+  .music-player-albums { padding-left: 3.125rem; }
+}
