@@ -1,14 +1,19 @@
 import Link from 'next/link'
 import { ThemeToggle } from './theme-toggle'
 
-const navItems = {
+type NavItem = {
+  name: string
+  external?: boolean
+}
+
+const navItems: Record<string, NavItem> = {
   '/': {
     name: 'início',
   },
   '/about': {
     name: 'sobre',
   },
-  '/music': {
+  '/#musica': {
     name: 'músicas',
   },
   '/books': {
@@ -25,13 +30,26 @@ export function Navbar() {
           id="nav"
         >
           <div className="flex flex-row space-x-0">
-            {Object.entries(navItems).map(([path, { name }]) => {
+            {Object.entries(navItems).map(([path, { name, external }]) => {
+              const className =
+                'transition-all hover:text-neutral-800 [.dark_&]:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1'
+
+              if (external) {
+                return (
+                  <a
+                    key={path}
+                    href={path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                  >
+                    {name}
+                  </a>
+                )
+              }
+
               return (
-                <Link
-                  key={path}
-                  href={path}
-                  className="transition-all hover:text-neutral-800 [.dark_&]:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
-                >
+                <Link key={path} href={path} className={className}>
                   {name}
                 </Link>
               )

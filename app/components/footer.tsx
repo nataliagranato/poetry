@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import { MusicPlayer } from './music-player'
 
 export function Footer() {
   return (
-    <footer className="py-6 md:px-8 md:py-0">
-      <div className="container flex flex-col items-center justify-center gap-4 md:h-24">
+    <footer className="mt-20 border-t border-neutral-200 py-8 [.dark_&]:border-neutral-800">
+      <MusicPlayer />
+      <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-neutral-200 pt-6 md:flex-row [.dark_&]:border-neutral-800">
         <p className="text-center text-sm leading-loose text-muted-foreground">
           © {new Date().getFullYear()} Natália Granato
         </p>
@@ -24,7 +26,7 @@ export function Footer() {
           >
             X
           </Link>
-<Link
+          <Link
             href="https://open.spotify.com/show/0X3f62yvAszkVq2afMfSKx?si=683cf5a1d08b4332"
             target="_blank"
             rel="noreferrer"
