@@ -263,7 +263,7 @@ table {
 .dark .music-player-controls button { color: #a3a3a3; }
 .dark .music-player-controls button:hover:not(:disabled) { background: #171717; color: #fafafa; }
 .music-player-controls button:disabled { cursor: wait; opacity: 0.35; }
-.music-player-controls svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
+.music-player-controls svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentcolor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
 .music-player-controls .music-player-play { width: 2.75rem; height: 2.75rem; background: #171717; color: white; }
 .music-player-controls .music-player-play:hover:not(:disabled) { background: #404040; color: white; }
 .dark .music-player-controls .music-player-play { background: #fafafa; color: #171717; }
