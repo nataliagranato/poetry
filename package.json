@@ -22,5 +22,13 @@
     "sugar-high": "^0.6.0",
     "tailwindcss": "4.0.0-alpha.13",
     "typescript": "5.3.3"
+  },
+  "overrides": {
+    "sharp": "0.35.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "sharp": "0.35.4"
+    }
   }
 }
